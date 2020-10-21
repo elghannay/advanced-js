@@ -1,2 +1,2 @@
-const test = G_('hello', 'there', 'en')
-console.log(test);
+const test = G_('mohamed', 'elghannay', 'en')
+test.greet().greet(true).setLang('es').greet(true)
