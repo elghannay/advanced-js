@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 html {
     box-sizing: border-box;
 }
@@ -20,7 +20,7 @@ body {
     width: auto;
     text-align: center;
     padding: 60px 40px 20px 40px;
-    min-width: 700px;
+    max-width: 800px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     background-color: white;
@@ -53,14 +53,19 @@ button:active {
 }
 
 .quote-content {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: lighter;
 }
 
 .author {
     font-style: italic;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: right;
+    font-weight: 400;
+}
+
+.long-quote {
+    font-size: 1.3rem;
 }
 
 .twitter {
@@ -69,13 +74,10 @@ button:active {
 
 .twitter:hover {
     color: #00acee;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: 10px solid #bebbbb;
     border-top: 10px solid #333;
     border-radius: 50%;

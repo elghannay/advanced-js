@@ -4,7 +4,6 @@ const tweetBtn = document.querySelector('.twitter');
 const newQuoteBtn = document.querySelector('.newQuote');
 const author = document.querySelector('.author');
 const loader = document.querySelector('.loader');
-loader.hidden = true;
 
 function loadingStart() {
     loader.hidden = false;
@@ -12,8 +11,10 @@ function loadingStart() {
 }
 
 function loadingComplete() {
-    loader.hidden = true;
-    container.hidden = false;
+    if (!loader.hidden) {
+        container.hidden = false;
+        loader.hidden = true;
+    }
 }
 
 const proxyUrl = 'https://whispering-tor-04671.herokuapp.com/';
@@ -21,17 +22,22 @@ const apiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&forma
 
 async function getQuote() {
 
-    loadingStart();
 
     try {
+        loadingStart();
         const response = await fetch(proxyUrl + apiUrl);
         const data = await response.json(response);
+
+        // Reduce font size for long quotes
+        if (data.quoteText.length > 80) {
+            quoteContent.classList.add('long-quote');
+        } else {
+            quoteContent.classList.remove('long-quote');
+        }
         quoteContent.innerText = data.quoteText;
-        author.innerText = data.quoteAuthor;
+        author.innerText = `~ ${data.quoteAuthor} ~`;
         loadingComplete();
-        // console.log(data);
     } catch (error) {
-        // console.log(error);
         getQuote();
     }
 }
